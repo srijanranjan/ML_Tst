@@ -1,0 +1,45 @@
+from google.colab import drive
+drive.mount('/content/drive')
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.metrics import r2_score, mean_squared_error
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from math import sqrt
+
+df = pd.read_csv('/content/drive/MyDrive/Datasets/Salary_dataset.csv')
+
+
+df = df.drop('Unnamed: 0', axis = 1)
+print(df.describe())
+print(df.head(10))
+print(df.shape)
+
+df.plot(kind = 'scatter', x = 'YearsExperience', y = 'Salary')
+plt.show()
+
+x = df[['YearsExperience']]
+y = df[['Salary']]
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 100)
+
+regressor = LinearRegression()
+regressor.fit(x_train, y_train)
+y_pred = regressor.predict(x_test)
+
+print(y_pred)
+
+df.plot(kind = 'scatter', x ='YearsExperience', y = 'Salary')
+plt.plot(x_test, y_pred, color = 'red', linewidth = 2, label = 'Regression Line')
+plt.xlabel('Years of Experience')
+plt.ylabel('Salary')
+plt.title('Years of Experience vs Salary')
+plt.legend()
+plt.show()
+
+r2 = r2_score(y_test, y_pred)
+rmse = sqrt(mean_squared_error(y_test, y_pred))
+
+print(f'R2 Score: {r2}')
+print(f'RMSE: {rmse}')
