@@ -1,0 +1,58 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.stats import norm, uniform, binom, poisson, chi2
+
+nu , sigma = 0,1
+x = np.linspace(-5, 5, 1000)
+pdf = norm.pdf(x, nu, sigma)
+
+plt.plot(x, pdf, label = 'Normal Distribution')
+plt.title('PDF distribution')
+plt.xlabel('x')
+plt.ylabel('Probability density function')
+plt.legend()
+plt.show()
+
+a, b = 0, 5
+x = np.linspace(a - 0.5, b + 0.5, 1000)
+pdf = uniform.pdf(x, a, b-a)
+
+plt.plot(x, pdf, label = 'Uniform Distribution')
+plt.title('PDF distribution')
+plt.xlabel('x')
+plt.ylabel('Probability density function')
+plt.legend()
+plt.show()
+
+n, p = 10, 0.5
+x = np.arange(0, n+1)
+pmf = binom.pmf(x, n , p)
+
+plt.plot(x , pmf, label = 'Binomial DIstribiution')
+plt.title('PMF distribution')
+plt.xlabel('x')
+plt.ylabel('Probability')
+plt.legend()
+plt.show()
+
+mu = 5
+x = np.arange(0, 20)
+pmf = poisson.pmf(x, mu)
+
+plt.plot(x, pmf, marker = 'o', label = 'Poisson Distribution')
+plt.title('PMF distribution')
+plt.xlabel('Occurences')
+plt.ylabel('Probability')
+plt.legend()
+plt.show()
+
+df = 5
+x = np.linspace(0 , 20, 500)
+pdf = chi2.pdf(x, df)
+
+plt.plot(x, pdf, label = 'Chi-Square Distribution')
+plt.title('PDF')
+plt.xlabel('x')
+plt.ylabel('Probability density')
+plt.legend()
+plt.show()
