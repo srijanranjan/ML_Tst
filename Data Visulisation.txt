@@ -1,0 +1,34 @@
+from google.colab import drive;
+drive.mount('/content/drive')
+
+import pandas as pd
+from pandas.plotting import scatter_matrix
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('/content/drive/MyDrive/Datasets/Iris.csv')
+
+print(df.head())
+print(df.describe())
+print(df.shape)
+
+cpy_df = df.copy()
+
+print(cpy_df.head())
+
+cpy_df = cpy_df.drop('Id', axis = 1)
+
+print(cpy_df.head())
+
+print(cpy_df.groupby('Species').size())
+
+cpy_df.plot(kind = 'box', subplots = True)
+plt.show()
+
+axes = scatter_matrix(cpy_df, diagonal = 'hist')
+
+for ax in axes.flatten():
+    ax.xaxis.label.set_size(6)  # Set x-axis label font size
+    ax.yaxis.label.set_size(6)  # Set y-axis label font size
+    ax.tick_params(axis='both', labelsize=6)  # Set tick label font size
+
+plt.show()
