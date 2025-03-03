@@ -1,0 +1,56 @@
+import numpy as np
+def compute_covariance_matrix(X, Y):
+    data = np.array([X, Y])
+    return np.cov(data)
+def main():
+    X = [3, 5, 7, 8, 10]
+    Y = [4, 12, 15, 16, 17]
+    cov_matrix = compute_covariance_matrix(X, Y)
+    print("\nCovariance Matrix")
+    print(cov_matrix)
+if __name__ == "__main__":
+    main()
+
+import numpy as np
+def compute_covariance_matrix(X, Y):
+    data = np.array([X, Y])
+    return np.cov(data)
+def main():
+    X = [3,5,7,8,10]
+    Y = [10,8,6,4,3]
+    cov_matrix = compute_covariance_matrix(X, Y)
+    print("\nCovariance Matrix")
+    print(cov_matrix)
+if __name__ == "__main__":
+    main()
+
+import numpy as np
+def compute_covariance_matrix(X, Y):
+    data = np.array([X, Y])
+    return np.cov(data)
+def main():
+    X =[3,80,8,120,300]
+    Y = [10,4,100,2,190]
+    cov_matrix = compute_covariance_matrix(X, Y)
+    print("\nCovariance Matrix")
+    print(cov_matrix)
+if __name__ == "__main__":
+    main()
+
+import numpy as np
+
+def compute_covariance_matrix(X, Y):
+    data = np.array([X, Y])
+    return np.cov(data, bias=True)  # Use bias=True for population covariance
+
+def main():
+    X = [3, 80, 8, 120, 300]
+    Y = [100, 2, 190, 4, 10]  # Rearranged Y to break correlation
+
+    cov_matrix = compute_covariance_matrix(X, Y)
+
+    print("\nCovariance Matrix")
+    print(cov_matrix)
+
+if __name__ == "__main__":
+    main()
